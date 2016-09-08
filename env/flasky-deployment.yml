@@ -1,0 +1,24 @@
+
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: flasky
+spec:
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: flasky
+    spec:
+      containers:
+      - name: flask
+        image: shalev67/flasky:v2
+        ports:
+          - containerPort: 5000
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 15
+          timeoutSeconds: 1

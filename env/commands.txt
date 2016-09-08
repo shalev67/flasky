@@ -1,0 +1,6 @@
+
+export KUBECONFIG="${KUBECONFIG}:$(pwd)/kubeconfig"
+kubectl config use-context vagrant-multi
+
+kubectl proxy --port=8080
+

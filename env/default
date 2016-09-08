@@ -1,0 +1,13 @@
+upstream kube-nodes {
+  server 172.17.4.201:30080;
+  server 172.17.4.202:30080;
+  server 172.17.4.203:30080;
+}
+server {
+  listen 80 default_server;
+  location / {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_pass http://kube-nodes;
+  }
+}
