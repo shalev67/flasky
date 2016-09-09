@@ -20,7 +20,7 @@ spec:
           httpGet:
             path: /
             port: 5000
-          initialDelaySeconds: 10
+          initialDelaySeconds: 15
           timeoutSeconds: 1
           periodSeconds: 2
           failureThreshold: 2
