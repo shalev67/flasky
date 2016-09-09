@@ -11,7 +11,7 @@ def hello():
     if is_200:
         return "<!DOCTYPE html><html><body><h1>Hello World my name is: %s</h1></body></html>" % os.uname()[1]
     else:
-        return "<!DOCTYPE html><html><body><h1>Hello darkness my old friend: %s</h1></body></html>" % os.uname()[1]
+        return "<!DOCTYPE html><html><body><h1>Hello darkness my old friend: %s</h1></body></html>" % os.uname()[1], 500
 
 @app.route('/bug')
 def bug():
