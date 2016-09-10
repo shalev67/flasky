@@ -1,0 +1,16 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: fibo
+  labels:
+    app: fibo
+spec:
+  ports:
+    - port: 5000
+      nodePort: 30090
+      name: web
+  selector:
+    app: fibo
+  type: NodePort
+

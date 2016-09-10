@@ -1,0 +1,28 @@
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: fibo
+spec:
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: fibo
+    spec:
+      containers:
+      - name: fibo
+        image: shalev67/fibo:v1.1
+        ports:
+          - containerPort: 5000
+#        livenessProbe:
+#          httpGet:
+#            path: /fibo/admin/cache
+#            port: 5000
+#          initialDelaySeconds: 15
+#          timeoutSeconds: 1
+#          periodSeconds: 2
+#          failureThreshold: 2
+        env:
+        - name: MONGODB_CONNECTION_STRING
+          value: "mongodb://mongo.default:27017/fibo"
