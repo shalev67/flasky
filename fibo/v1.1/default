@@ -1,0 +1,25 @@
+upstream kube-node-flasky-port {
+  server 172.17.4.201:30080;
+  server 172.17.4.202:30080;
+  server 172.17.4.203:30080;
+}
+
+upstream kube-node-fibo-port {
+  server 172.17.4.201:30090;
+  server 172.17.4.202:30090;
+  server 172.17.4.203:30090;
+}
+
+server {
+  listen 80 default_server;
+  location / {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_pass http://kube-node-flasky-port;
+  }
+  location /fibo{
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_pass http://kube-node-fibo-port;
+  }
+}
